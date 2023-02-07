@@ -1,0 +1,16 @@
+# format
+print('*'*20)
+print('{0:^5}{1:^15}'.format('STT', 'Value'))
+print('-'*20)
+print('{0:^5}{1:^15}'.format('STT', 'Value'))
+print('{0:^5}{1:^15}'.format('STT', 'Value'))
+print('{0:^5}{1:^15}'.format('STT', 'Value'))
+print('{0:^5}{1:^15}'.format('STT', 'Value'))
+print('{0:^5}{1:^15}'.format('STT', 'Value'))
+print('{0:^5}{1:^15}'.format('STT', 'Value'))
+print('{0:^5}{1:^15}'.format('STT', 'Value'))
+print('{0:^5}{1:^15}'.format('STT', 'Value'))
+print('{0:^5}{1:^15}'.format('STT', 'Value'))
+print('{0:^5}{1:^15}'.format('STT', 'Value'))
+print('-'*20)
+
