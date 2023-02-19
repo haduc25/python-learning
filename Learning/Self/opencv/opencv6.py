@@ -1,6 +1,14 @@
+"""_summary_
+    File hand.py
+    https://google.github.io/mediapipe/solutions/hands
+"""
+
 import cv2 as cv
 import os
 import time
+
+import hand
+
 
 pTime = 0
 capture = cv.VideoCapture(0)
@@ -33,8 +41,20 @@ print(lst_2[0].shape)  # (132, 109, 3)
 
 print(lst)  # ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png']
 
+# phát hiện ra bàn tay, detectionCon tạm hiểu là độ tin cậy tối thiểu
+detector = hand.handDetector(detectionCon=1)
+
+
 while True:
     ret, frame = capture.read()
+
+    # find hands
+    frame = detector.findHands(frame)
+
+    # find Position | phát hiện vị trí và draw 20 điểm trên bàn tay ra
+    lmList = detector.findPosition(frame, draw=False)
+
+    print(lmList)
 
     # save value image[0] shape
     height, width, channel = lst_2[0].shape
@@ -47,8 +67,8 @@ while True:
     # gán lại để chạy lại vòng mới
     pTime = cTime
 
-    print(fps)
-    print(type(fps))  # float
+    # print(fps)
+    # print(type(fps))  # float
 
     # display FPS on screen | putText
     cv.putText(frame, f'FPS: {int(fps)}', (150, 70),
