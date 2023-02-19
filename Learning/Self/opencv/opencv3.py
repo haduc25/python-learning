@@ -12,7 +12,11 @@ capture = cv.VideoCapture(0)  # Nếu có nhiều webcam thì id 1, 2, 3...
 # Cho chụp ảnh liên tục
 while True:
     ret, frame = capture.read()  # đọc img & chuyển về ret, frame
-    print(ret)
+    # print(ret)
+
+    if not ret:
+        print('\n\n\nWebcam đang được sử dụng!\n\n\n')
+        break
 
     # set width, height
     width = int(capture.get(3))
@@ -48,7 +52,11 @@ while True:
     image[height//2:, :width//2] = small_frame
 
     # image 4 - từ chiều cao chai 2 đến cuối, từ chiều ngang chia 2 đến cuối | bottom right
-    image[height//2:, width//2:] = small_frame
+    # image[height//2:, width//2:] = small_frame
+
+    # rotate image 4
+    image[height//2:, width //
+          2:] = cv.rotate(small_frame, cv.ROTATE_180)  # 180deg
 
     # show img
     cv.imshow('My Capture', image)
