@@ -54,6 +54,13 @@ for i in range(100):
         def my_function():
             pass  # placeholder until we add code
     """
+
+# select area image
+areaSelected = img[0:400, 100:200]  # chọn vùng ảnh từ x=0->500, y=200->500
+# gán lại vào image hiện tại, kiểu copy `areaSelected` xong lại paste vào ảnh hiện tại
+img[300:700, 300:400] = areaSelected  # dán vào vị trí x=300->400, y=500->800
+
+
 # show img
 cv.imshow('My Crush', img)
 
