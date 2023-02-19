@@ -1,0 +1,6 @@
+pip install opencv-python
+
+
+//testing installed
+import cv2
+print(cv2.__version__) #4.7.0
