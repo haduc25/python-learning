@@ -44,6 +44,9 @@ print(lst)  # ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png']
 # phát hiện ra bàn tay, detectionCon tạm hiểu là độ tin cậy tối thiểu
 detector = hand.handDetector(detectionCon=1)
 
+# list finger
+fingerId = [4, 8, 12, 16, 20]
+
 
 while True:
     ret, frame = capture.read()
@@ -55,6 +58,18 @@ while True:
     lmList = detector.findPosition(frame, draw=False)
 
     print(lmList)
+
+    # nếu có bàn tay
+    if len(lmList) != 0:
+        # create a array empty
+
+        # loop from 1 -> 5 / because array have 4 index
+        for id in range(1, 5):
+            # ngón trỏ - [8][2] - 8 là dốt ngón tay thứ 8, 2 là phần tử thứ 2 => 0, 1, 2
+            if lmList[fingerId[id]][2] < lmList[fingerId[id] - 2][2]:
+                print('Ngón___đang mở', id)
+
+    # for first finger
 
     # save value image[0] shape
     height, width, channel = lst_2[0].shape
