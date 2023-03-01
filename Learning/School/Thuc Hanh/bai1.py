@@ -11,7 +11,7 @@ def soChanHoacSoLe():
 
 
 # bai 1.2
-def soAmHoacSoDuong(x):
+def soAmHoacSoDuong():
     x = float(input('Nhập 1 số bất kỳ: '))
     if (x >= 0):
         print(f'{x} là số dương')
@@ -91,8 +91,8 @@ def laTamGiac():
 
 # bai 1.8
 def soLonNhat():
-    a = float(input("Nhap so a: "))
-    b = float(input("Nhap so b: "))
+    a = float(input("Nhập số a: "))
+    b = float(input("Nhập số b: "))
 
     # # case 1:
     # if (a > b):
@@ -212,11 +212,8 @@ def tinhTongCacPtTrongMang(arr):
     for i in range(len(arr)):
         # print(arr[i])
         tong += arr[i]
-    return tong
 
-
-def printTongCacPtTrongMang(arr):
-    print(f'Tổng các phần tử trong mảng là: {tinhTongCacPtTrongMang(arr)}')
+    print(f'Tổng các phần tử trong mảng là: {tong}')
 
 
 # bai 1.15
@@ -225,11 +222,7 @@ def demSoChan(arr):
     for i in arr:
         if (i % 2) == 0:
             dem += 1
-    return dem
-
-
-def printDemSoChan(arr):
-    print(f'Tổng số lượng số chẵn trong mảng là: {demSoChan(arr)}')
+    print(f'Tổng số lượng số chẵn trong mảng là: {dem}')
 
 
 # bai 1.16
@@ -239,14 +232,10 @@ def soLonNhatTrongMang(arr):
     for i in arr:
         if (i > max_value):
             max_value = i
+    print(f'_Số lớn nhất trong mảng: {max_value}')
 
     # case 2
     print(f'Số lớn nhất trong mảng: {max(arr)}')
-    return max_value
-
-
-def printSoLonNhatTrongMang(arr):
-    print(f'Số lớn nhất trong mảng: {soLonNhatTrongMang(arr)}')
 
 
 # bai 1.17
@@ -256,14 +245,11 @@ def soNhoNhatTrongMang(arr):
     for i in arr:
         if (i < min_value):
             min_value = i
+    print(f'_Số nhỏ nhất trong mảng: {min_value}')
 
     # case 2
     print(f'Số nhỏ nhất trong mảng: {min(arr)}')
     return min_value
-
-
-def printSoNhoNhatTrongMang(arr):
-    print(f'Số nhỏ nhất trong mảng: {soNhoNhatTrongMang(arr)}')
 
 
 # bai 1.18
@@ -322,9 +308,9 @@ def soNhoNhatTrongMang2Chieu(mat):
 
 
 ###############################################################################
-# main
-# soChanHoacSoLe(x)
-# soAmHoacSoDuong(x)
+# ============== main ==============#
+# soChanHoacSoLe()
+# soAmHoacSoDuong()
 # tinhPtBacNhat()
 # hienThiNamNhuan()
 # tinhPtBacHai()
@@ -333,20 +319,21 @@ def soNhoNhatTrongMang2Chieu(mat):
 # soChanHoacSoLe2()
 # timSoLonNhat()
 # kiemTraNamNhuanVaDayMonthYear()
-# printSnt()
+# printSnt()  # 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 # printSoNguyenDuongN()
+
 # array
 arr = [1, 5, 2, 11, 6]
-# printTongCacPtTrongMang(arr) #25
-# printDemSoChan(arr)  #2
-# printSoLonNhatTrongMang(arr) #11
-# printSoNhoNhatTrongMang(arr) #1
+# tinhTongCacPtTrongMang(arr)  # 25
+# demSoChan(arr)  # 2
+# soLonNhatTrongMang(arr)  # 11
+# soNhoNhatTrongMang(arr)  # 1
 
 # matrix
 matrix = [[13, 5, 7], [2, 4, 34], [4, 6, 1]]
 
-# tinhTongCacPtMang2Chieu(matrix)  #76
-# demSoChanMang2Chieu(matrix)  #5
-# demSoLeMang2Chieu(matrix) #4
-# soLonNhatTrongMang2Chieu(matrix) #34
-# soNhoNhatTrongMang2Chieu(matrix) #1
+# tinhTongCacPtMang2Chieu(matrix)  # 76
+# demSoChanMang2Chieu(matrix)  # 5
+# demSoLeMang2Chieu(matrix)  # 4
+# soLonNhatTrongMang2Chieu(matrix)  # 34
+# soNhoNhatTrongMang2Chieu(matrix)  # 1
