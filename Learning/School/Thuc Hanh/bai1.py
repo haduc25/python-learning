@@ -3,7 +3,8 @@ from math import sqrt
 # bai 1.1
 
 
-def soChanHoacSoLe(x):
+def soChanHoacSoLe():
+    x = float(input('Nhập 1 số bất kỳ: '))
     if (x % 2 == 0):
         print(f'{x} là số chẵn')
     else:
@@ -12,17 +13,17 @@ def soChanHoacSoLe(x):
 
 # bai 1.2
 def soAmHoacSoDuong(x):
+    x = float(input('Nhập 1 số bất kỳ: '))
     if (x >= 0):
         print(f'{x} là số dương')
     else:
         print(f'{x} là số âm')
 
-#
+
+# bai 1.3 / ax + b = 0
 def tinhPtBacNhat():
-    # ax + b = 0
     a = float(input("Nhập số a: "))
     b = float(input("Nhập số b: "))
-
     if a == 0:
         if b == 0:
             print("Vô số nghiệm")
@@ -32,13 +33,7 @@ def tinhPtBacNhat():
         print("Phương trình có nghiệm x =", -b / a)
 
 
-# main
-x = float(input('Nhập 1 số bất kỳ: '))
-# soChanHoacSoLe(x)
-# soAmHoacSoDuong(x)
-
-
-###
+# bai 1.4
 def laNamNhuan(year):
     if year % 4 == 0:
         if year % 100 == 0:
@@ -52,15 +47,16 @@ def laNamNhuan(year):
         return False
 
 
-# year = int(input('Nhập số năm: '))
-# if laNamNhuan(year):
-#     print(year, "là năm nhuận")
-# else:
-#     print(year, "không phải là năm nhuận")
+def hienThiNamNhuan():
+    year = int(input('Nhập số năm: '))
+    if laNamNhuan(year):
+        print(year, "là năm nhuận")
+    else:
+        print(year, "không phải là năm nhuận")
 
 
-#
-def canbac2():
+# bai 1.5, 1.6
+def tinhPtBacHai():
     a = float(input("Nhập a: "))
     b = float(input("Nhập b: "))
     c = float(input("Nhập c: "))
@@ -80,47 +76,70 @@ def canbac2():
         print("x2 = ", x2)
 
 
-# canbac2()
-
-
-def isTamgiac():
-    a = float(input("Nhap canh a: "))
-    b = float(input("Nhap canh b: "))
-    c = float(input("Nhap canh c: "))
+# bai 1.7
+def laTamGiac():
+    a = float(input("Nhập cạnh a: "))
+    b = float(input("Nhập cạnh b: "))
+    c = float(input("Nhập cạnh c: "))
 
     if a <= 0 or b <= 0 or c <= 0:
-        print("Khong tao thanh tam giac.")
+        print("Không tạo thành tam giác.")
     elif a + b <= c or a + c <= b or b + c <= a:
-        print("Khong tao thanh tam giac.")
+        print("Không tạo thành tam giác.")
     else:
-        print("Tao thanh tam giac.")
+        print("Tạo thành tam giác.")
 
 
-# isTamgiac()
-
-
-def isMax():
+# bai 1.8
+def soLonNhat():
     a = float(input("Nhap so a: "))
     b = float(input("Nhap so b: "))
 
+    # # case 1:
     # if (a > b):
     #     print(f'A={a} lớn hơn B={b}')
-    # elif (a == b):
-    #     print(f'A={a} bằng B={b}')
-    # else:
-    #     print(f'B={b} lớn hơn A={a}')
+    #     return
+    # print(f'B={b} lớn hơn A={a}')
+
+    # case 2
+    if (a > b):
+        print(f'A={a} lớn hơn B={b}')
+    elif (a == b):
+        print(f'A={a} bằng B={b}')
+    else:
+        print(f'B={b} lớn hơn A={a}')
 
 
-# isMax()
+# bai 1.9
+def soChanHoacSoLe2():
+    x = int(input('Nhập 1 số bất kỳ: '))
+    if (x % 2 == 0):
+        print(f'{x} là số chẵn')
+    else:
+        print(f'{x} là số lẻ')
 
-# # 1.10
-# a = float(input("Nhap a: "))
-# b = float(input("Nhap b: "))
-# c = float(input("Nhap c: "))
 
-# max_value = max(a, b, c)
+# bai 1.10
+a = float(input("Nhap a: "))
+b = float(input("Nhap b: "))
+c = float(input("Nhap c: "))
 
-# print("Gia tri lon nhat la:", max_value)
+max_value = max(a, b, c)
+
+print("Gia tri lon nhat la:", max_value)
+
+###############################################################################
+
+
+# main
+# soChanHoacSoLe(x)
+# soAmHoacSoDuong(x)
+# tinhPtBacNhat()
+# hienThiNamNhuan()
+# tinhPtBacHai()
+# laTamGiac()
+# soLonNhat()
+# soChanHoacSoLe2()
 
 
 ################################
