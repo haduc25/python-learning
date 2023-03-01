@@ -124,9 +124,9 @@ a = float(input("Nhap a: "))
 b = float(input("Nhap b: "))
 c = float(input("Nhap c: "))
 
-max_value = max(a, b, c)
+# max_value = max(a, b, c)
 
-print("Gia tri lon nhat la:", max_value)
+# print("Gia tri lon nhat la:", max_value)
 
 ###############################################################################
 
