@@ -1,4 +1,6 @@
 from math import sqrt
+import time
+import os
 
 
 # bai 1.1
@@ -307,6 +309,77 @@ def soNhoNhatTrongMang2Chieu(mat):
     print("Số nhỏ nhất trong mảng 2 chiều là: ", min_value)
 
 
+# bai 1.23
+def handleNhapDuLieuVaoMang():
+    arr = []
+    n = int(input("Nhập số lượng phần tử của mảng: "))
+
+    for i in range(n):
+        # Yêu cầu nhập giá trị của phần tử thứ i
+        value = int(input(f"Nhập pt thứ [{i}]: "))
+
+        # Thêm giá trị của phần tử vào mảng
+        arr.append(value)
+
+    # loading, clear console
+    for i in range(5):
+        print('.' * i, end='\r')
+        time.sleep(0.5)
+    os.system('cls')
+    print('*'*25)
+
+    # print array
+    print("Mảng vừa nhập là:", arr, end='\n\n')
+
+    # calc
+    tinhTongCacPtTrongMang(arr)
+    demSoChan(arr)
+    soLonNhatTrongMang(arr)
+    soNhoNhatTrongMang(arr)
+
+
+def handleNhapDuLieuVaoMaTran():
+    m = int(input("Nhập số hàng của ma trận: "))
+    n = int(input("Nhập số cột của ma trận: "))
+    matrix = []
+
+    for i in range(m):
+        hang = []
+        for j in range(n):
+            value = int(input(f"Nhập pt thứ [{i}][{j}]: "))
+            hang.append(value)
+
+        # Thêm vào ma trận
+        matrix.append(hang)
+
+    # loading, clear console
+    for i in range(5):
+        print('.' * i, end='\r')
+        time.sleep(0.5)
+    os.system('cls')
+    print('*'*25)
+
+    # print array
+    print("Ma trận vừa nhập là:")
+    for hang in matrix:
+        print(hang)
+    print('\n')
+
+    # calc
+    tinhTongCacPtMang2Chieu(matrix)
+    demSoChanMang2Chieu(matrix)
+    demSoLeMang2Chieu(matrix)
+    soLonNhatTrongMang2Chieu(matrix)
+    soNhoNhatTrongMang2Chieu(matrix)
+
+
+def mainApp():
+    handleNhapDuLieuVaoMang()
+    print('\n\n')
+    print('*'*25)
+    handleNhapDuLieuVaoMaTran()
+
+
 ###############################################################################
 # ============== main ==============#
 # soChanHoacSoLe()
@@ -337,3 +410,7 @@ matrix = [[13, 5, 7], [2, 4, 34], [4, 6, 1]]
 # demSoLeMang2Chieu(matrix)  # 4
 # soLonNhatTrongMang2Chieu(matrix)  # 34
 # soNhoNhatTrongMang2Chieu(matrix)  # 1
+
+
+# bai tap 1.23
+mainApp()
