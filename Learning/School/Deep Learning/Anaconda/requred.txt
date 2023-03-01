@@ -1,0 +1,8 @@
+activate evn_name
+pip install opencv-python==3.4.1.15
+pip install opencv-contrib-python==3.4.1.15
+pip install keras
+
+activate deep_learning
+
+
