@@ -1,8 +1,7 @@
 from math import sqrt
 
+
 # bai 1.1
-
-
 def soChanHoacSoLe():
     x = float(input('Nhập 1 số bất kỳ: '))
     if (x % 2 == 0):
@@ -120,13 +119,152 @@ def soChanHoacSoLe2():
 
 
 # bai 1.10
-a = float(input("Nhap a: "))
-b = float(input("Nhap b: "))
-c = float(input("Nhap c: "))
+def timSoLonNhat():
+    a = float(input("Nhập a: "))
+    b = float(input("Nhập b: "))
+    c = float(input("Nhập c: "))
 
-# max_value = max(a, b, c)
+    # case 1
+    if a >= b and a >= c:
+        print("Số lớn nhất là A=", a)
+    elif b >= a and b >= c:
+        print("Số lớn nhất là B=", b)
+    else:
+        print("Số lớn nhất là C=", c)
 
-# print("Gia tri lon nhat la:", max_value)
+    # case 2
+    max_value = max(a, b, c)
+    print("Số lớn nhất là:", max_value)
+
+
+# bai 1.11
+def kiemTraNamNhuanVaDayMonthYear():
+    # Nhập ngày, tháng, năm từ bàn phím
+    day = int(input("Nhập ngày: "))
+    month = int(input("Nhập tháng: "))
+    year = int(input("Nhập năm: "))
+
+    # Kiểm tra năm nhuận
+    if year % 400 == 0 or (year % 4 == 0 and year % 100 != 0):
+        laNamNhuan = True
+    else:
+        laNamNhuan = False
+
+    # Kiểm tra ngày, tháng, năm hợp lệ
+    if year > 0 and 1 <= month <= 12:
+        if month == 2:
+            if laNamNhuan:
+                max_day = 29
+            else:
+                max_day = 28
+        elif month in [4, 6, 9, 11]:
+            max_day = 30
+        else:
+            max_day = 31
+
+        if 1 <= day <= max_day:
+            print("Ngày, tháng, năm hợp lệ.")
+        else:
+            print("Ngày không hợp lệ.")
+    else:
+        print("Năm không hợp lệ.")
+
+
+# bai 1.12
+def snt(n):
+    if n < 2 or (n > 2 and n % 2 == 0):
+        return False
+    for i in range(3, int(sqrt(n)) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+
+def printSnt():
+    print('Các số nguyên tố từ 1 đến 100 là:')
+    for i in range(1, 101):
+        if snt(i):
+            print(i, end=' ')
+
+
+# bai 1.13
+def tongNguyenDuongN(x):
+    tong = 0
+    for i in range(1, x + 1):
+        # print(i)
+        tong += i
+    return tong
+
+
+def printSoNguyenDuongN():
+    while (True):
+        x = int(input('Nhập số nguyên dương: '))
+        if (x < 0):
+            print('Số vừa nhập không hợp lệ!')
+        else:
+            break
+    print(f'Tổng {x} số nguyên dương đầu tiên là: {tongNguyenDuongN(x)}')
+
+
+# bai 1.14
+def tinhTongCacPtTrongMang(arr):
+    tong = 0
+    for i in range(len(arr)):
+        # print(arr[i])
+        tong += arr[i]
+    return tong
+
+
+def printTongCacPtTrongMang(arr):
+    print(f'Tổng các phần tử trong mảng là: {tinhTongCacPtTrongMang(arr)}')
+
+
+# bai 1.15
+def demSoChan(arr):
+    dem = 0
+    for i in arr:
+        if (i % 2) == 0:
+            dem += 1
+    return dem
+
+
+def printDemSoChan(arr):
+    print(f'Tổng số lượng số chẵn trong mảng là: {demSoChan(arr)}')
+
+
+# bai 1.16
+def soLonNhatTrongMang(arr):
+    # case 1
+    max_value = arr[0]
+    for i in arr:
+        if (i > max_value):
+            max_value = i
+
+    # case 2
+    print(f'Số lớn nhất trong mảng: {max(arr)}')
+    return max_value
+
+
+def printSoLonNhatTrongMang(arr):
+    print(f'Số lớn nhất trong mảng: {soLonNhatTrongMang(arr)}')
+
+
+# bai 1.17
+def soNhoNhatTrongMang(arr):
+    # case 1
+    min_value = arr[0]
+    for i in arr:
+        if (i < min_value):
+            min_value = i
+
+    # case 2
+    print(f'Số nhỏ nhất trong mảng: {min(arr)}')
+    return min_value
+
+
+def printSoNhoNhatTrongMang(arr):
+    print(f'Số nhỏ nhất trong mảng: {soNhoNhatTrongMang(arr)}')
+
 
 ###############################################################################
 
@@ -140,122 +278,15 @@ c = float(input("Nhap c: "))
 # laTamGiac()
 # soLonNhat()
 # soChanHoacSoLe2()
-
-
-################################
-def meow():
-    # Nhập ngày, tháng, năm từ bàn phím
-    day = int(input("Nhap ngay: "))
-    month = int(input("Nhap thang: "))
-    year = int(input("Nhap nam: "))
-
-    # Kiểm tra năm nhuận
-    if year % 400 == 0 or (year % 4 == 0 and year % 100 != 0):
-        is_leap_year = True
-    else:
-        is_leap_year = False
-
-    # Kiểm tra ngày, tháng, năm hợp lệ
-    if year > 0 and 1 <= month <= 12:
-        if month == 2:
-            if is_leap_year:
-                max_day = 29
-            else:
-                max_day = 28
-        elif month in [4, 6, 9, 11]:
-            max_day = 30
-        else:
-            max_day = 31
-
-        if 1 <= day <= max_day:
-            print("Ngay, thang, nam hop le.")
-        else:
-            print("Ngay khong hop le.")
-    else:
-        print("Nam khong hop le.")
-
-
-# meow()
-
-
-########################################
-def snt(n):
-    if n < 2 or (n > 2 and n % 2 == 0):
-        return False
-    for i in range(3, int(sqrt(n)) + 1, 2):
-        if n % i == 0:
-            return False
-    return True
-
-
-def printSnt():
-    for i in range(1, 101):
-        if snt(i):
-            print(i, end=' ')
-
-
+# timSoLonNhat()
+# kiemTraNamNhuanVaDayMonthYear()
 # printSnt()
+# printSoNguyenDuongN()
 
 
-def nhapSoNguyenDuong():
-    tong = 0
-    x = int(input('so nguyen duong: '))
-    for i in range(1, x + 1):
-        print(i)
-        tong += i
-    return tong
-
-
-# print(nhapSoNguyenDuong())
-
-
-def tongPtMang():
-    tong = 0
-    arr = [1, 5, 0, 5, 6]
-    for i in range(len(arr)):
-        print(arr[i])
-        tong += arr[i]
-    return tong
-
-
-# print(tongPtMang())
-
-# 1.15
-def demSoChan():
-    arr = [57, 39, 90, 14, 7, 44, 85, 54, 63, 23]
-    dem = 0
-    for i in arr:
-        if (i % 2) == 0:
-            dem += 1
-    return dem
-
-
-# print(demSoChan())
-
-
-def maxTrongArr():
-    arr = [25, 69, 18, 60, 58, 41, 75, 97, 81, 64]
-    # print(max(arr))
-
-    max_value = arr[0]
-    for i in arr:
-        if (i > max_value):
-            max_value = i
-    return max_value
-
-
-# print(maxTrongArr())
-
-
-def minTrongArr():
-    arr = [25, 69, 18, 60, 58, 41, 75, 97, 81, 64]
-    # print(min(arr))
-
-    min_value = arr[0]
-    for i in arr:
-        if (i < min_value):
-            min_value = i
-    return min_value
-
-
-# print(minTrongArr())
+# array
+arr = [1, 5, 2, 11, 6]
+# printTongCacPtTrongMang(arr)
+# printDemSoChan(arr)
+# printSoLonNhatTrongMang(arr)
+# printSoNhoNhatTrongMang(arr)
