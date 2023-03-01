@@ -266,9 +266,62 @@ def printSoNhoNhatTrongMang(arr):
     print(f'Số nhỏ nhất trong mảng: {soNhoNhatTrongMang(arr)}')
 
 
+# bai 1.18
+def tinhTongCacPtMang2Chieu(mat):
+    tong = 0
+
+    for i in range(len(mat)):
+        for j in range(len(mat[i])):
+            tong += mat[i][j]
+
+    print("Tổng các phần tử trong mảng 2 chiều là:", tong)
+
+
+# bai 1.19
+def demSoChanMang2Chieu(mat):
+    soChan = 0
+    for i in range(len(mat)):
+        for j in range(len(mat[i])):
+            if matrix[i][j] % 2 == 0:
+                soChan = soChan + 1
+
+    print("Số lượng phần tử chẵn trong mảng 2 chiều là:", soChan)
+
+
+# bai 1.20
+def demSoLeMang2Chieu(mat):
+    soLe = 0
+    for i in range(len(mat)):
+        for j in range(len(mat[i])):
+            if matrix[i][j] % 2 != 0:
+                soLe = soLe + 1
+
+    print("Số lượng phần tử lẻ trong mảng 2 chiều là:", soLe)
+
+
+# bai 1.21
+def soLonNhatTrongMang2Chieu(mat):
+    max_value = mat[0][0]
+    for i in range(len(mat)):
+        for j in range(len(mat[i])):
+            if matrix[i][j] > max_value:
+                max_value = matrix[i][j]
+
+    print("Số lớn nhất trong mảng 2 chiều là: ", max_value)
+
+
+# bai 1.22
+def soNhoNhatTrongMang2Chieu(mat):
+    min_value = mat[0][0]
+    for i in range(len(mat)):
+        for j in range(len(mat[i])):
+            if matrix[i][j] < min_value:
+                min_value = matrix[i][j]
+
+    print("Số nhỏ nhất trong mảng 2 chiều là: ", min_value)
+
+
 ###############################################################################
-
-
 # main
 # soChanHoacSoLe(x)
 # soAmHoacSoDuong(x)
@@ -282,11 +335,18 @@ def printSoNhoNhatTrongMang(arr):
 # kiemTraNamNhuanVaDayMonthYear()
 # printSnt()
 # printSoNguyenDuongN()
-
-
 # array
 arr = [1, 5, 2, 11, 6]
-# printTongCacPtTrongMang(arr)
-# printDemSoChan(arr)
-# printSoLonNhatTrongMang(arr)
-# printSoNhoNhatTrongMang(arr)
+# printTongCacPtTrongMang(arr) #25
+# printDemSoChan(arr)  #2
+# printSoLonNhatTrongMang(arr) #11
+# printSoNhoNhatTrongMang(arr) #1
+
+# matrix
+matrix = [[13, 5, 7], [2, 4, 34], [4, 6, 1]]
+
+# tinhTongCacPtMang2Chieu(matrix)  #76
+# demSoChanMang2Chieu(matrix)  #5
+# demSoLeMang2Chieu(matrix) #4
+# soLonNhatTrongMang2Chieu(matrix) #34
+# soNhoNhatTrongMang2Chieu(matrix) #1
