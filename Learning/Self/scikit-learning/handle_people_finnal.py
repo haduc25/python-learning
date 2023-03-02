@@ -9,13 +9,14 @@ df = pd.read_csv('Learning/Self/scikit-learning/people2.csv',
 print(df)
 
 # vẽ biểu đồ minh họa dataset
-plt.plot(df.cao, df.nang, 'ro')
+plt.plot(df.cao, df.nang, 'ro')  # ro: định dạng của lược đồ
 plt.xlabel('Chiều cao (cm)')
 plt.ylabel('Cân nặng (kg)')
 plt.show()
 
 # sử dụng hồi quy tuyến tính
-X = df.loc[:, ['cao']].values   # X là dữ liệu đầu vào
+# X là dữ liệu đầu vào / duyêt qua tất cả các giá trị của cột cao
+X = df.loc[:, ['cao']].values
 y = df.nang.values              # y là dữ liệu đầu ra
 model = LinearRegression()      # loại mô hình
 model.fit(X, y)                 # tập huấn luyện trên dữ liệu
@@ -26,8 +27,9 @@ plt.scatter(X, y, c='b')
 plt.plot(X, model.predict(X))
 plt.show()
 
-# dự báo 1 số tình huống
-x = float(input('Nhập chiều cao: '))
+
+# dự báo chiều cao
+x = float(input('\nNhập chiều cao (cm): '))
 
 for i in range(5):
     print('.' * i, end='\r')
