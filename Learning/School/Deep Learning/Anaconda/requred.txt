@@ -5,4 +5,7 @@ pip install keras
 
 activate deep_learning
 
+//
+pip install imutils
+
 
