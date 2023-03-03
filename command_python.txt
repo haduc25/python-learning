@@ -1,0 +1,3 @@
+pip freeze
+pip list
+pip show name_lib

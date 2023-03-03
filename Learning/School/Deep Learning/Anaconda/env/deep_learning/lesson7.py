@@ -7,6 +7,7 @@ Created on Fri Mar  3 10:36:04 2023
 [Nguồn tham khảo]
 - https://huytranvan2010.github.io/Sliding-window-for-object-detection/
 - https://pyimagesearch.com/2015/03/23/sliding-windows-for-object-detection-with-python-and-opencv/
+- https://minhng.info/tutorials/xu-ly-anh-opencv-cua-so-truot-sliding-window.html
 """
 #imutils: a library for basic image processing tasks such as resizing and rotating images.
 import cv2
@@ -64,7 +65,7 @@ for resized in pyramid(image, scale=1.5):
         
         clone = resized.copy()
         cv2.rectangle(clone, (x, y), (x + winW, y + winH), (0, 255, 0), 2)
-        print(window.mean())
+        print(window.mean(), x, y)
         cv2.imshow("window", clone)
         cv2.waitKey(1)
         time.sleep(0.025)
