@@ -62,17 +62,58 @@ while True:
     # nếu có bàn tay
     if len(lmList) != 0:
         # create a array empty
+        fingers = []
 
-        # loop from 1 -> 5 / because array have 4 index
+        # ngón cái [4] - Kiểm tra xem [4] nằm bên trái hay bên phải điểm [3]
+        # - lmList[fingerId[0]][1] - [0] là pt thứ 0 trong fingerId
+        # - [1] là pt thứ 1 trong video input => trái, phải
+        # - lmList[fingerId[0] - 1][1] - fingerId[0] - 1: kiểm tra ngón cái với điểm số 3 / 4 - 1 = 3 (đốt thứ 3)
+        if lmList[fingerId[0]][1] < lmList[fingerId[0] - 1][1]:
+            print('Ngón___đang mở', id)
+            fingers.append(1)
+
+            # show ngón đang mở
+            print('Giá trị của ngón đang mở: ', lmList[fingerId[0]][1])
+            print('Giá trị của đốt ngón đang mở: ',
+                  lmList[fingerId[0] - 1][1])
+        else:
+            fingers.append(0)
+
+        # loop from 1 -> 5 (8, 12, 16, 20) / because array have 4 index
         for id in range(1, 5):
-            # ngón trỏ - [8][2] - 8 là dốt ngón tay thứ 8, 2 là phần tử thứ 2 => 0, 1, 2
+            print('id: ', id)
+
+            # ngón trỏ - [8][2] - 8 là dốt ngón tay thứ 8, 2 là phần tử thứ 2 => 0, 1, 2 | 2 là chiều cao (cao, thấp)
+            # Logic: ngón nào đang mở thì thêm vào array 'fingers' 1 - ngược lại thêm 0
             if lmList[fingerId[id]][2] < lmList[fingerId[id] - 2][2]:
                 print('Ngón___đang mở', id)
+                fingers.append(1)
 
-    # for first finger
+                # show ngón đang mở
+                print('Giá trị của ngón đang mở: ', lmList[fingerId[id]][2])
+                print('Giá trị của đốt ngón đang mở: ',
+                      lmList[fingerId[id] - 2][2])
+            else:
+                fingers.append(0)
 
-    # save value image[0] shape
-    height, width, channel = lst_2[0].shape
+        print(f'Array fingers is {fingers}')
+        countFingers = fingers.count(1)
+        print('Số ngón tay đang mở: ', countFingers)
+
+        # for first finger
+
+        # save value image[0] shape
+        height, width, channel = lst_2[0].shape
+
+        # gán dl vào frame / gán image vào frame
+        frame[0:height, 0:width] = lst_2[0]  # (132, 109, 3)
+
+        # vẽ hình chữ nhật hiện số ngón tay
+        cv.rectangle(frame, (0, 200), (150, 400), (0, 255, 0), -1)
+
+        # add text
+        cv.putText(frame, str(countFingers), (0, 390),
+                   cv.FONT_HERSHEY_COMPLEX, 8, (255, 0, 0), 10)
 
     # show FPS | time.time() => trả về số giây, tính từ 0:0:00 ngày 1/1/1970 theo giờ UTC , gọi là (thời điểm bắt đầu thời gian)
     cTime = time.time()
@@ -90,7 +131,7 @@ while True:
                cv.FONT_HERSHEY_COMPLEX, 1.8, (0, 255, 0), 3)
 
     # gán dl vào frame / gán image vào frame
-    frame[0:height, 0:width] = lst_2[0]  # (132, 109, 3)
+    # frame[0:height, 0:width] = lst_2[0]  # (132, 109, 3)
 
     cv.imshow('Window capture', frame)
 
