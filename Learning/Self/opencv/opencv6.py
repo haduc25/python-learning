@@ -103,10 +103,18 @@ while True:
         # for first finger
 
         # save value image[0] shape
-        height, width, channel = lst_2[0].shape
+        """
+        Image: ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png']
+        0 -> 5
+        countFingers - 1 =>
+            - mặc định là -1 => image cuối cùng => k ngón
+            - nếu giơ 1 ngón => countFingers = 1 - 1 => 0 => image => 1.png => 1 ngón
+            ... (tương tự đến hết)
+        """
+        height, width, channel = lst_2[countFingers - 1].shape
 
-        # gán dl vào frame / gán image vào frame
-        frame[0:height, 0:width] = lst_2[0]  # (132, 109, 3)
+        # gán dl vào frame / gán image vào frame  | lấy 1 vùng trong Frame or Image => gán vùng = image ngón tay
+        frame[0:height, 0:width] = lst_2[countFingers - 1]  # (132, 109, 3)
 
         # vẽ hình chữ nhật hiện số ngón tay
         cv.rectangle(frame, (0, 200), (150, 400), (0, 255, 0), -1)
