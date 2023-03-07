@@ -155,7 +155,59 @@ encryptedImageList = encodeImageCustom2(images)
 
 # length of encryptedImageList
 print('length of encryptedImageList is', len(encryptedImageList))
+
+
+# =============================================================================
+# Using webcam
+# =============================================================================
+
+capture = cv2.VideoCapture(0)
+
+while True:
+    ret, frame = capture.read()  # đọc img & return về ret => True/False, frame => khung hình
     
+    # checking webcam is being used or not?
+    if not ret:
+        print('\n\n\nWebcam đang được sử dụng!\n\n\n')
+        break
+    
+    # resize frame
+    """
+        cv2.resize(frame, (0, 0), None, fx=.5, fy=.5)\
+        (0, 0) => dsize
+        None => dst
+        fx=.5, fy=.5 => kích thước = 50% image ban đầu
+    """
+    frameResized = cv2.resize(frame, (0, 0), None, fx=.5, fy=.5)
+    
+    
+    # Convert BGR => RGB
+    frameResized = cv2.cvtColor(frameResized, cv2.COLOR_BGR2RGB)
+    
+    """ face current frame | current face position on frame (vị trí khuôn mặt hiện tại trên khung hình)
+        - xác định vị trí khuôn mặt hiện tại trên webcam => face_recognition.face_locations()
+    """
+
+    currentFacePositionOnFrame = face_recognition.face_locations(frameResized) # lấy khuôn mặt & vị trí khuôn mặt hiện tại
+    
+    # Encode current face on Webcam => face_recognition.face_encodings()
+    encodeCurrentFaceOnWebcam = face_recognition.face_encodings(frameResized)
+    
+    # show img
+    cv2.imshow('My Capture', frameResized)
+
+    # waiting key / 1s
+    if (cv2.waitKey(1) == ord('q')):
+        break
+    
+
+# exit camera
+capture.release()
+
+# close window
+cv2.destroyAllWindows()
+
+
     
     
     
