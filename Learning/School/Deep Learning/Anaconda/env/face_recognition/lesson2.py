@@ -56,11 +56,38 @@ print('\nlength of array images is', len(images)) # 5
 print('className is', classNames) # ['Ban_Mai_Huyen_1', 'Do_Mai_Lan_1', 'Do_Mai_Lan_2', 'Nguyen_Tu_Anh_1', 'Nguyen_Tu_Anh_2']
     
     
+# =============================================================================
+# STEP 2: ENCODE IMAGE
+# =============================================================================
+
+def encodeImage(images):
+    # create a empty array 
+    encodeList = []    
     
+    # loop to get element in images
+    for img in images:
+        # convert from BGR to RGB => cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        
+        # encode image => face_recognition.face_encodings()
+        # face_recognition.face_encodings(img)[0] => index = 0 vì vẫn chạy từng image 1
+        encodeImg = face_recognition.face_encodings(img)[0]
     
+        # add image encodeed to array 'encodeList'
+        encodeList.append(encodeImg)
+        
+        
+    # print
+    print('\n\n################## ENCODED SUCCESS ##################\n\n')
     
-    
-    
+    return encodeList
+
+
+# Encrypted image list | Danh sách hình ảnh đã được mã hóa
+encryptedImageList = encodeImage(images)
+
+# length of encryptedImageList
+print('length of encryptedImageList is', len(encryptedImageList))
     
     
     
