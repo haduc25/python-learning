@@ -1,0 +1,3 @@
+pip install autopep8 # need install
+
+Ctrl + Alt + I 
