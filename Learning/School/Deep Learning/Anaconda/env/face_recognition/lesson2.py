@@ -8,6 +8,7 @@ Created on Tue Mar  7 17:40:38 2023
 import cv2
 import face_recognition
 import os
+import tqdm
 
 # =============================================================================
 # STEP 1: LOAD IMAGE FROM FOLDER (IMAGE FOR TRAINING) 
@@ -83,8 +84,74 @@ def encodeImage(images):
     return encodeList
 
 
+# encodeImage custom have progressbar from chatGPT + F8
+def encodeImageCustom(images):
+    # create an empty array
+    encodeList = []
+
+    # get the length of the images list
+    num_images = len(images)
+
+    # loop to get element in images
+    for i, img in enumerate(images):
+        # convert from BGR to RGB => cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+        # encode image => face_recognition.face_encodings()
+        # face_recognition.face_encodings(img)[0] => index = 0 vì vẫn chạy từng image 1
+        encodeImg = face_recognition.face_encodings(img)[0]
+
+        # add image encoded to array 'encodeList'
+        encodeList.append(encodeImg)
+
+        # calculate the progress as a percentage
+        progress = (i + 1) / num_images * 100
+
+        # print the progress
+        print(f"Progressing: {int(progress)}%")
+
+    # print
+    print('\n\n################## ENCODED SUCCESS ##################\n\n')
+
+    return encodeList
+
+
+# custom using lib tqdm
+def encodeImageCustom2(images):
+    # create an empty array
+    encodeList = []
+
+    # create a tqdm progress bar
+    progress_bar = tqdm.tqdm(total=len(images), desc="Encoding images...", unit="image")
+
+    # loop to get element in images
+    for img in images:
+        # convert from BGR to RGB => cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+        # encode image => face_recognition.face_encodings()
+        # face_recognition.face_encodings(img)[0] => index = 0 vì vẫn chạy từng image 1
+        encodeImg = face_recognition.face_encodings(img)[0]
+
+        # add image encoded to array 'encodeList'
+        encodeList.append(encodeImg)
+
+        # update the progress bar
+        progress_bar.update()
+
+    # close the progress bar
+    progress_bar.close()
+
+    # print
+    print('\n\n################## ENCODED SUCCESS ##################\n\n')
+
+    return encodeList
+
+
 # Encrypted image list | Danh sách hình ảnh đã được mã hóa
-encryptedImageList = encodeImage(images)
+# encryptedImageList = encodeImage(images)
+# encryptedImageList = encodeImageCustom(images)
+encryptedImageList = encodeImageCustom2(images)
 
 # length of encryptedImageList
 print('length of encryptedImageList is', len(encryptedImageList))
