@@ -52,10 +52,25 @@ from keras.layers import Conv2D
 img = cv2.imread('../img/img2.jpg', cv2.IMREAD_COLOR)
 
 # convert image to RGB format
-#img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+# img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+# img = cv2.cvtColor(img, cv2.colo)
 # img = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
-img = cv2.cvtColor(img, cv2.COLOR_YUV2RGB)
+# img = cv2.cvtColor(img, cv2.COLOR_YUV2RGB)
 
+
+height, width, channels = img.shape
+
+# Check if the image has 3 channels (RGB) or 4 channels (RGBA)
+if channels == 3:
+    print('Image is in RGB format_')
+elif channels == 4:
+    print('Image is in RGBA format')
+    
+# Check if the image is in BGR format by checking the value of the first pixel
+if img[0,0,0] == img[0,0,2]:
+    print('Image is in BGR format')
+elif img[0,0,0] == img[0,0,1]:
+    print('Image is in RGB format')
 
 # resize image to (960, 718) shape
 img = cv2.resize(img, (960, 718))
