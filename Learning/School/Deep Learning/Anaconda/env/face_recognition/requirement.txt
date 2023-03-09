@@ -1,0 +1,8 @@
+//auto format code
+pip install autopep8 # need install
+
+Ctrl + Alt + I 
+
+
+//Progress
+pip install tqdm

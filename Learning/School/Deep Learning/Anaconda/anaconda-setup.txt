@@ -1,0 +1,3 @@
+# tạo môi trường
+conda create -n nameEnvironment python=3.8.12
+Ex: conda create -n deep_learning python=3.8.12
