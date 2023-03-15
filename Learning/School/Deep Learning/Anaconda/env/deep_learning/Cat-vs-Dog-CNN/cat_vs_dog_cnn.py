@@ -127,13 +127,15 @@ for dense_layer in dense_layers:
             model.add(Activation('relu'))
             model.add(MaxPooling2D(pool_size=(2, 2)))
 
+            # print('conv_layers: ', conv_layers)
             for l in range(conv_layer-1):
                 model.add(Conv2D(layer_size, (3, 3)))
                 model.add(Activation('relu'))
                 model.add(MaxPooling2D(pool_size=(2, 2)))
 
             model.add(Flatten())
-
+            # print(dense_layer, range(dense_layer))
+            
             for _ in range(dense_layer):
                 model.add(Dense(layer_size))
                 model.add(Activation('relu'))
@@ -179,10 +181,49 @@ def prepare(filepath):
 
 
 model = tf.keras.models.load_model('Cat_vs_Dog-CNN.model')
-
+#%%
 # prediction = model.predict([prepare('../Input/cat-and-dog/test_set/test_set/cats/cat.4001.jpg')])
-prediction = model.predict([prepare('unknown/con_gi_day5.jpg')])
+prediction = model.predict([prepare('unknown/con_gi_day3.jpg')])
 # prediction = model.predict([prepare('D:\\Coding\\Python\\Learning\\School\\Deep Learning\\Anaconda\\env\\deep_learning\\Cat-vs-Dog-CNN\\unknown\\con_gi_day3.jpg')])
 
 print(prediction)  # will be a list in a list.
 print('Kết quả dự đoán: ', CATEGORIES[int(prediction[0][0])])
+
+
+#%%
+from tensorflow.keras.models import load_model
+model = load_model('Cat_vs_Dog-CNN.model')
+
+
+import cv2
+import numpy as np
+
+image = cv2.imread('unknown/con_gi_day3.jpg')
+image = cv2.resize(image, (150,150))
+image = np.expand_dims(image, axis=0)
+
+prediction = model.predict(image)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
