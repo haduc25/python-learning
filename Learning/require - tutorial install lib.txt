@@ -1,7 +1,0 @@
-install lib
-pip install [nameLib]
-
-
-reqire lib
-pip install numpy
-pip install pygame --pre
