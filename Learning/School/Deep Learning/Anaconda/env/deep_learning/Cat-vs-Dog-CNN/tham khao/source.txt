@@ -1,0 +1,8 @@
+# Cats and Dogs Classification
+https://www.kaggle.com/code/kdnishanth/cat-vs-dog-cnn-97-accuracy-for-train-dataset
+
+# Kaggle Cats and Dogs Dataset
+https://www.microsoft.com/en-us/download/details.aspx?id=54765
+
+#Cat and Dog | test_set, training_set
+https://www.kaggle.com/datasets/tongpython/cat-and-dog

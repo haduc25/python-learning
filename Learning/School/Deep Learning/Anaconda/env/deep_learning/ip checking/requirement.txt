@@ -1,0 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 21 17:03:09 2023
+
+@author: Admin
+"""
+pip install sockets
